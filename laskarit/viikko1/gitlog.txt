@@ -1,0 +1,116 @@
+commit 15a49c852458290d13ac4414954425461936fcff
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 19:08:18 2018 +0200
+
+    poistin ekan ja muutin tokan nimeksi tokatoka eli 22
+
+ tiedostoja/file1  | 0
+ tiedostoja/file2  | 0
+ tiedostoja/file22 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 17ab690860c28b8c93183e5736b77803641cde47
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 19:00:28 2018 +0200
+
+    committaan nyt 3 tiedostoa
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 5b79e77bff2eac02b9d1ebdb7f76e290a244a20d
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 18:51:19 2018 +0200
+
+    muutin ekaa ja kolmatta tiedostoa ja kommitin ne -p:llä
+
+ eka.txt    | 2 +-
+ kolmas.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 89f5536de3a853334c1569e9d08bee48feca5ba0
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 18:48:22 2018 +0200
+
+    no nyt se vasta muutti nimen
+
+ eka.txt      | 587 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ tiedosto.txt | 587 -----------------------------------------------------------
+ 2 files changed, 587 insertions(+), 587 deletions(-)
+
+commit 612b134a168e0a84bddb91eddb04d9dc30cfc496
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 18:44:20 2018 +0200
+
+    poistin toisen textitiedoston ja muutin tiedoston nimen ekaksi
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit ab551293914a5e5dd9eb5e672780dc9581385d43
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 18:34:38 2018 +0200
+
+    poistin ja lisäsin vähän
+
+ tiedosto.txt | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+commit 9916052c8830ef974e5f534b1094948ecb27f1e3
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 18:31:55 2018 +0200
+
+    paljon tekstiä
+
+ tiedosto.txt | 593 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 592 insertions(+), 1 deletion(-)
+
+commit b182ba35df08352b15462c76705b568c6cfc96e1
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 18:22:54 2018 +0200
+
+    koko stuff kansio on nyt täällä
+
+ stuff/me.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 620b07805c9db9935d798b8c5cb9086b23ec8675
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 18:17:06 2018 +0200
+
+    muutin kolmannen ja tokan tiedoston sisältöä
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit ee3df0f4bfe2ce3af5f74c502d511278ca7094cf
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 18:12:04 2018 +0200
+
+    lisäsin kolmannen
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 47bbad4c3025e2e23ac03be65ab145402972fd57
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 17:47:17 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit a8638c8bdf27d221d6fc92c31d42ccb3b02ed03a
+Author: Martin Strohm <martin.strohm@helsinki.fi>
+Date:   Thu Mar 15 17:36:43 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
