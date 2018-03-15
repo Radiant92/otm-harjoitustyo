@@ -2,9 +2,9 @@
 
 normaalia tekstiä
 
-**lihavoitu teksti (tähti tähti)**
+**tässä on pulleaa tekstiä**
 
-*kursivoitua teksiä (tähti)*
+*tässä kursivoitua teksiä*
 
 [gitlog.txt](laskarit/viikko1/gitlog.txt)
 
