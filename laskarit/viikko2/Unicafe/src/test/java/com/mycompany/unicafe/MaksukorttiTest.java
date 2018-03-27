@@ -60,7 +60,7 @@ public class MaksukorttiTest {
         assertEquals("saldo: 1.0", kortti.toString());
     }
     @Test public void sentitMuuntuuOikein(){
-        kortti.otaRahaa(55);
-        assertEquals("saldo: 0.45", kortti.toString());
+        kortti.otaRahaa(95);
+        assertEquals("saldo: 0.05", kortti.toString());
     }
 }
