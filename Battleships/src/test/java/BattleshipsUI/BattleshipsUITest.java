@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Battleships;
+package BattleshipsUI;
 
-import java.util.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,45 +16,30 @@ import static org.junit.Assert.*;
  *
  * @author strohm
  */
-public class ShipTest {
-
-    Ship ship;
-    List<String> list;
-
-    public ShipTest() {
+public class BattleshipsUITest {
+    
+    public BattleshipsUITest() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Before
     public void setUp() {
-        this.ship = new Ship(10, "line", 1, 1);
-        list = new ArrayList();
-        list.add("line");
-        list.add("uShip");
-        list.add("lShip");
-        
     }
-
+    
     @After
     public void tearDown() {
     }
 
-    
-    @Test
-    public void shipIsNotSunkenAtTheBeginning() {
-        assertTrue(this.ship.isSunken() == false);
-    }
-
-    @Test
-    public void formIsValid() {
-        assertTrue(list.contains(this.ship.getForm()));
-    }
-
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    // @Test
+    // public void hello() {}
 }

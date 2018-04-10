@@ -5,7 +5,6 @@
  */
 package Battleships;
 
-import java.util.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,12 +16,13 @@ import static org.junit.Assert.*;
  *
  * @author strohm
  */
-public class ShipTest {
+public class GameTest {
 
-    Ship ship;
-    List<String> list;
+    Game easy;
+    Game normal;
+    Game hard;
 
-    public ShipTest() {
+    public GameTest() {
     }
 
     @BeforeClass
@@ -35,27 +35,26 @@ public class ShipTest {
 
     @Before
     public void setUp() {
-        this.ship = new Ship(10, "line", 1, 1);
-        list = new ArrayList();
-        list.add("line");
-        list.add("uShip");
-        list.add("lShip");
-        
+        this.easy = new Game(6);
+        this.normal = new Game(8);
+        this.hard = new Game(10);
     }
 
     @After
     public void tearDown() {
     }
 
-    
-    @Test
-    public void shipIsNotSunkenAtTheBeginning() {
-        assertTrue(this.ship.isSunken() == false);
-    }
 
     @Test
-    public void formIsValid() {
-        assertTrue(list.contains(this.ship.getForm()));
+    public void didYouWinAtBeginningFalse() {
+        assertTrue(this.easy.didYouWin() == false);
     }
 
+ 
+
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    // @Test
+    // public void hello() {}
 }

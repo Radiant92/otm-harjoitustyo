@@ -1,3 +1,7 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-Battleships,Battleships,Board,0,32,0,4,0,7,0,4,0,2
-Battleships,Battleships,Ship,0,21,0,0,0,8,0,4,0,4
+Battleships,BattleshipsUI,BattleshipsUI,258,0,20,0,59,0,16,0,6,0
+Battleships,Battleships,Board,11,139,0,12,3,23,2,11,2,5
+Battleships,Battleships,Shipyard,147,53,28,4,35,12,19,4,4,3
+Battleships,Battleships,Ship,144,69,17,5,20,16,15,5,5,4
+Battleships,Battleships,ShipSection,13,18,0,0,5,7,4,2,4,2
+Battleships,Battleships,Game,77,86,6,10,14,19,6,7,3,2
