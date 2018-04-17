@@ -5,7 +5,7 @@
  */
 package BattleshipsUI;
 
-import Battleships.*;
+import battleships.Game;
 
 import javafx.application.Application;
 
@@ -20,7 +20,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 /**
  *
@@ -60,38 +59,46 @@ public class BattleshipsUI extends Application {
         easy.setOnAction((event) -> {
             newGame = new Game(6);
 
-            makeBoard(6);
+            playGame(6);
             board.setPadding(new Insets(10, 10, 10, 10));
             game.setCenter(board);
             window.setScene(gameScreen);
         });
 
-        /* normal.setOnAction((event) -> {
+        normal.setOnAction((event) -> {
             newGame = new Game(8);
-            makeBoard(8);
+            playGame(8);
             board.setPadding(new Insets(10, 10, 10, 10));
             game.setCenter(board);
             window.setScene(gameScreen);
 
         });
+
         hard.setOnAction((event) -> {
             newGame = new Game(10);
-            makeBoard(10);
+            playGame(10);
             board.setPadding(new Insets(10, 10, 10, 10));
             game.setCenter(board);
             window.setScene(gameScreen);
         });
-         */
+
         window.setScene(menu);
         window.show();
 
     }
 
-    public void makeBoard(int size) {
+    public void playGame(int size) {
         loser = false;
         winner = false;
         Label turns = new Label("" + newGame.getTurns());
-        game.setTop(turns);
+        Label line = new Label("Line ships left: " + newGame.getLineShips());
+        Label lShips = new Label("L-shaped ships left: " + newGame.getLShips());
+        Label uShips = new Label("U-shaped ships left: " + newGame.getUShips());
+        HBox labels = new HBox();
+        labels.setSpacing(20);
+        labels.getChildren().addAll(turns, line, lShips, uShips);
+        game.setTop(labels);
+
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 Button b = new Button(x + " - " + y);
@@ -124,6 +131,9 @@ public class BattleshipsUI extends Application {
                                     winner = true;
                                 }
                             }
+                            line.setText("Line ships left: " + newGame.getLineShips());
+                            lShips.setText("L-shaped ships left: " + newGame.getLShips());
+                            uShips.setText("U-shaped ships left: " + newGame.getUShips());
                         }
                     }
                 });

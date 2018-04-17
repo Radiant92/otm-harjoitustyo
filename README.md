@@ -7,3 +7,4 @@
 
 [tuntikirjanpito](Battleships/Dokumentaatio/tuntikirjanpito.md)
 
+[arkkitehtuurikuvaus](Battleships/Dokumentaatio/arkkitehtuuri.md)
