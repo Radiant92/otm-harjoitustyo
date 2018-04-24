@@ -6,6 +6,9 @@
 package BattleshipsUI;
 
 import battleships.Game;
+import java.util.List;
+
+import users.Database;
 
 import javafx.application.Application;
 
@@ -13,13 +16,16 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import javafx.scene.layout.BorderPane;
 
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import javafx.stage.Stage;
+import users.User;
 
 /**
  *
@@ -29,17 +35,38 @@ public class BattleshipsUI extends Application {
 
     private static GridPane board;
     private static Game newGame;
+    private static Database database;
     private static BorderPane game;
+    private static Scene menuScreen;
     private static boolean loser;
     private static boolean winner;
+    private static User user;
+    private static Stage window;
 
     @Override
-    public void start(Stage window) {
+    public void start(Stage window) throws Exception {
+        this.window = window;
+        this.database = new Database("userfile.txt");
 
+        BorderPane menu = new BorderPane();
         BorderPane setup = new BorderPane();
         game = new BorderPane();
         board = new GridPane();
         board.setPrefSize(500, 500);
+
+        VBox options = new VBox();
+        options.setSpacing(20);
+
+        Label name = new Label("New player");
+        TextField addField = new TextField();
+        Button add = new Button("add");
+
+        Label enter = new Label("Who is playing?");
+        TextField chooseField = new TextField();
+        Button choose = new Button("choose");
+
+        options.getChildren().addAll(name, addField, add, enter, chooseField, choose);
+        menu.setCenter(options);
 
         HBox buttons = new HBox();
         buttons.setSpacing(20);
@@ -48,13 +75,50 @@ public class BattleshipsUI extends Application {
         Button normal = new Button("NORMAL");
         Button hard = new Button("HARD");
 
-        buttons.getChildren().add(easy);
-        buttons.getChildren().add(normal);
-        buttons.getChildren().add(hard);
+        buttons.getChildren().addAll(easy, normal, hard);
+
+        HBox info = new HBox();
+        info.setSpacing(20);
+
+        Label userName = new Label();
+        Label easyWins = new Label();
+        Label normalWins = new Label();
+        Label hardWins = new Label();
+
+        info.getChildren().addAll(userName, easyWins, normalWins, hardWins);
+        setup.setTop(info);
         setup.setCenter(buttons);
 
-        Scene menu = new Scene(setup);
+        menuScreen = new Scene(menu);
+        Scene difficultyScreen = new Scene(setup);
         Scene gameScreen = new Scene(game);
+
+        add.setOnAction((event) -> {
+            String text = addField.getText();
+            try {
+                database.addUser(text);
+            } catch (Exception ex) {
+
+            }
+            addField.setText("");
+        });
+        choose.setOnAction((event) -> {
+            if (!chooseField.getText().equals("name not found") && !chooseField.getText().isEmpty()) {
+                for (User us : database.getUsers()) {
+                    if (us.getName().equals(chooseField.getText())) {
+                        this.user = us;
+                        userName.setText("Name: " + us.getName());
+                        easyWins.setText("Easy wins: " + us.getWinsEasy());
+                        normalWins.setText("Normal wins: " + us.getWinsNormal());
+                        hardWins.setText("Hard wins: " + us.getWinsHard());
+
+                        window.setScene(difficultyScreen);
+                        break;
+                    }
+                }
+            }
+            chooseField.setText("name not found");
+        });
 
         easy.setOnAction((event) -> {
             newGame = new Game(6);
@@ -82,7 +146,7 @@ public class BattleshipsUI extends Application {
             window.setScene(gameScreen);
         });
 
-        window.setScene(menu);
+        window.setScene(menuScreen);
         window.show();
 
     }
@@ -105,10 +169,23 @@ public class BattleshipsUI extends Application {
                 b.setPrefSize(50, 50);
                 b.setOnMouseClicked(event -> {
                     if (loser == true) {
-                        b.setText("LOSER");
+                        goToMenu();
                     } else if (winner == true) {
 
-                        b.setText("WIN");
+                        if (size == 6) {
+                            this.user.WinEasy();
+                        } else if (size == 8) {
+                            this.user.WinNormal();
+                        } else {
+                            this.user.WinHard();
+                        }
+                        try {
+                            this.database.save();
+                        } catch (Exception ex) {
+
+                        }
+                        goToMenu();
+
                     } else {
                         String location = b.getText();
                         if (!location.equals("O") && !location.equals("X")) {
@@ -142,6 +219,10 @@ public class BattleshipsUI extends Application {
             }
         }
 
+    }
+
+    public static void goToMenu() {
+        window.setScene(menuScreen);
     }
 
     public static void main(String[] args) {

@@ -7,5 +7,5 @@
 |9.4|2|coded some more and made a lot of changes to classes|
 |10.4|10|coded the UI and made a playable "easy mode"|
 |17.4|8|easy, normal and hard modes work and test classes have more content|
-
-# summa = 24h 
+|24.4|4|main menu and final touches|
+# sum = 28h 
