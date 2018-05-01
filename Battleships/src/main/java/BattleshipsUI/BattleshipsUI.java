@@ -6,7 +6,7 @@
 package BattleshipsUI;
 
 import battleships.Game;
-import java.util.List;
+import java.util.*;
 
 import users.Database;
 
@@ -38,10 +38,9 @@ public class BattleshipsUI extends Application {
     private static Database database;
     private static BorderPane game;
     private static Scene menuScreen;
-    private static boolean loser;
-    private static boolean winner;
     private static User user;
     private static Stage window;
+    private static List<Label> leaderLabels;
 
     @Override
     public void start(Stage window) throws Exception {
@@ -50,6 +49,11 @@ public class BattleshipsUI extends Application {
 
         BorderPane menu = new BorderPane();
         BorderPane setup = new BorderPane();
+        BorderPane leaderBoards = new BorderPane();
+        BorderPane leaderboard = new BorderPane();
+        leaderboard.setPadding(new Insets(10, 10, 10, 10));
+        leaderboard.setPrefSize(500, 100);
+
         game = new BorderPane();
         board = new GridPane();
         board.setPrefSize(500, 500);
@@ -65,8 +69,41 @@ public class BattleshipsUI extends Application {
         TextField chooseField = new TextField();
         Button choose = new Button("choose");
 
-        options.getChildren().addAll(name, addField, add, enter, chooseField, choose);
+        Button leaderboardButton = new Button("Leaderboards");
+
+        VBox topFive = new VBox();
+        leaderLabels = new ArrayList<>();
+        Label first = new Label("1. ");
+        Label second = new Label("2. ");
+        Label third = new Label("3. ");
+        Label fourth = new Label("4. ");
+        Label fift = new Label("5. ");
+
+        leaderLabels.add(first);
+        leaderLabels.add(second);
+        leaderLabels.add(third);
+        leaderLabels.add(fourth);
+        leaderLabels.add(fift);
+
+        Button backButton = new Button("Back");
+        topFive.getChildren().addAll(leaderLabels);
+        leaderboard.setTop(topFive);
+        leaderboard.setCenter(backButton);
+
+        options.getChildren().addAll(name, addField, add, enter, chooseField, choose, leaderboardButton);
         menu.setCenter(options);
+
+        HBox leaderButtons = new HBox();
+        leaderButtons.setSpacing(20);
+
+        Button easyLeader = new Button("Easy");
+        Button normalLeader = new Button("Normal");
+        Button hardLeader = new Button("Hard");
+        Button backToMenu = new Button("Back");
+
+        leaderButtons.getChildren().addAll(easyLeader, normalLeader, hardLeader);
+        leaderBoards.setCenter(leaderButtons);
+        leaderBoards.setBottom(backToMenu);
 
         HBox buttons = new HBox();
         buttons.setSpacing(20);
@@ -90,9 +127,11 @@ public class BattleshipsUI extends Application {
         setup.setCenter(buttons);
 
         menuScreen = new Scene(menu);
+
         Scene difficultyScreen = new Scene(setup);
         Scene gameScreen = new Scene(game);
-
+        Scene leaderboardsScreen = new Scene(leaderBoards);
+        Scene leaderboardScreen = new Scene(leaderboard);
         add.setOnAction((event) -> {
             String text = addField.getText();
             try {
@@ -146,14 +185,60 @@ public class BattleshipsUI extends Application {
             window.setScene(gameScreen);
         });
 
+        leaderboardButton.setOnAction((event) -> {
+            window.setScene(leaderboardsScreen);
+        });
+        easyLeader.setOnAction((event) -> {
+            emptyList();
+            List<User> easyTop = this.database.getTopEasy();
+            int top = easyTop.size();
+            if(top > 5){
+                top = 5;
+            }
+            for (int i = 0; i < top; i++) {
+                leaderLabels.get(i).setText((1 + i) + ". " + easyTop.get(i).getName() + " Wins: " + easyTop.get(i).getWinsEasy());
+            }
+
+            window.setScene(leaderboardScreen);
+        });
+        normalLeader.setOnAction((event) -> {
+            emptyList();
+            List<User> normalTop = this.database.getTopNormal();
+            int top = normalTop.size();
+            if(top > 5){
+                top = 5;
+            }
+            for (int i = 0; i < top; i++) {
+                leaderLabels.get(i).setText((1 + i) + ". " + normalTop.get(i).getName() + " Wins: " + normalTop.get(i).getWinsNormal());
+            }
+            window.setScene(leaderboardScreen);
+        });
+        hardLeader.setOnAction((event) -> {
+            emptyList();
+            List<User> hardTop = this.database.getTopHard();
+            int top = hardTop.size();
+            if(top > 5){
+                top = 5;
+            }
+            for (int i = 0; i < top; i++) {
+                leaderLabels.get(i).setText((1 + i) + ". " + hardTop.get(i).getName() + " Wins: " + hardTop.get(i).getWinsHard());
+            }
+            window.setScene(leaderboardScreen);
+        });
+        backToMenu.setOnAction((event) -> {
+            goToMenu();
+        });
+        backButton.setOnAction((event) -> {
+            window.setScene(leaderboardsScreen);
+        });
+
         window.setScene(menuScreen);
         window.show();
 
     }
 
     public void playGame(int size) {
-        loser = false;
-        winner = false;
+
         Label turns = new Label("" + newGame.getTurns());
         Label line = new Label("Line ships left: " + newGame.getLineShips());
         Label lShips = new Label("L-shaped ships left: " + newGame.getLShips());
@@ -168,51 +253,48 @@ public class BattleshipsUI extends Application {
                 Button b = new Button(x + " - " + y);
                 b.setPrefSize(50, 50);
                 b.setOnMouseClicked(event -> {
-                    if (loser == true) {
-                        goToMenu();
-                    } else if (winner == true) {
 
-                        if (size == 6) {
-                            this.user.WinEasy();
-                        } else if (size == 8) {
-                            this.user.WinNormal();
-                        } else {
-                            this.user.WinHard();
-                        }
-                        try {
-                            this.database.save();
-                        } catch (Exception ex) {
+                    String location = b.getText();
+                    if (!location.equals("O") && !location.equals("X")) {
+                        String[] split = location.split("-");
 
-                        }
-                        goToMenu();
+                        int buttonX = Integer.parseInt(split[0].trim());
 
-                    } else {
-                        String location = b.getText();
-                        if (!location.equals("O") && !location.equals("X")) {
-                            String[] split = location.split("-");
+                        int buttonY = Integer.parseInt(split[1].trim());
+                        String result = newGame.hit(buttonX, buttonY);
 
-                            int buttonX = Integer.parseInt(split[0].trim());
+                        if (result.equals("miss")) {
+                            b.setText("O");
+                            turns.setText("" + newGame.getTurns());
+                            if (newGame.didYouLose() == true) {
 
-                            int buttonY = Integer.parseInt(split[1].trim());
-                            String result = newGame.hit(buttonX, buttonY);
+                                goToMenu();
 
-                            if (result.equals("miss")) {
-                                b.setText("O");
-                                turns.setText("" + newGame.getTurns());
-                                if (newGame.didYouLose() == true) {
-                                    loser = true;
-                                }
-                            } else if (result.equals("strike")) {
-                                b.setText("X");
-                                if (newGame.didYouWin() == true) {
-                                    winner = true;
-                                }
                             }
-                            line.setText("Line ships left: " + newGame.getLineShips());
-                            lShips.setText("L-shaped ships left: " + newGame.getLShips());
-                            uShips.setText("U-shaped ships left: " + newGame.getUShips());
+                        } else if (result.equals("strike")) {
+                            b.setText("X");
+                            if (newGame.didYouWin() == true) {
+                                if (size == 6) {
+                                    this.user.winEasy();
+                                } else if (size == 8) {
+                                    this.user.winNormal();
+                                } else {
+                                    this.user.winHard();
+                                }
+                                try {
+                                    this.database.save();
+                                } catch (Exception ex) {
+
+                                }
+                                goToMenu();
+
+                            }
                         }
+                        line.setText("Line ships left: " + newGame.getLineShips());
+                        lShips.setText("L-shaped ships left: " + newGame.getLShips());
+                        uShips.setText("U-shaped ships left: " + newGame.getUShips());
                     }
+
                 });
                 board.add(b, x, y);
 
@@ -225,7 +307,16 @@ public class BattleshipsUI extends Application {
         window.setScene(menuScreen);
     }
 
+    public static void emptyList() {
+        leaderLabels.get(0).setText("1. ");
+        leaderLabels.get(1).setText("2. ");
+        leaderLabels.get(2).setText("3. ");
+        leaderLabels.get(3).setText("4. ");
+        leaderLabels.get(4).setText("5. ");
+    }
+
     public static void main(String[] args) {
         launch(BattleshipsUI.class);
     }
+
 }

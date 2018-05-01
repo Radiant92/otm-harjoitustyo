@@ -8,4 +8,6 @@
 |10.4|10|coded the UI and made a playable "easy mode"|
 |17.4|8|easy, normal and hard modes work and test classes have more content|
 |24.4|4|main menu and final touches|
-# sum = 28h 
+|30.4|2|some test classes and database structure|
+|1.5|4|Leaderboard and final touches|
+# sum = 34h 

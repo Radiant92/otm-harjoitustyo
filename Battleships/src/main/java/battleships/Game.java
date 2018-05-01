@@ -23,7 +23,7 @@ public class Game {
             for (int i = 0; i < 3; i++) {
                 board.setLine(shipyard);
             }
-            this.turns = 15;
+            this.turns = 10;
 
         } else if (difficulty == 8) {
             for (int i = 0; i < 3; i++) {

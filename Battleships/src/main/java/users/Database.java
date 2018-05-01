@@ -43,7 +43,7 @@ public class Database {
         try (FileWriter writer = new FileWriter(new File(file))) {
             for (User user : users) {
                 writer.write(user.getName() + ";" + user.getWinsEasy() + ";"
-                        + user.getWinsNormal() + ";" + user.getWinsHard() + "/n");
+                        + user.getWinsNormal() + ";" + user.getWinsHard() + "\n");
             }
             writer.flush();
             writer.close();
@@ -69,6 +69,21 @@ public class Database {
                 save();
             }
         }
+    }
+
+    public List<User> getTopEasy() {
+        Collections.sort(users, (User a, User b) -> b.getWinsEasy() - a.getWinsEasy());
+        return users;
+    }
+
+    public List<User> getTopNormal() {
+        Collections.sort(users, (User a, User b) -> b.getWinsNormal() - a.getWinsNormal());
+        return users;
+    }
+
+    public List<User> getTopHard() {
+        Collections.sort(users, (User a, User b) -> b.getWinsHard() - a.getWinsHard());
+        return users;
     }
 
 }

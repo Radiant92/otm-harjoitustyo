@@ -5,7 +5,7 @@
  */
 package battleships;
 
-import battleships.Game;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,6 +39,7 @@ public class GameTest {
         this.easy = new Game(6);
         this.normal = new Game(8);
         this.hard = new Game(10);
+        
     }
 
     @After
@@ -54,10 +55,10 @@ public class GameTest {
     public void didYouLoseAtBeginningFalse() {
         assertTrue(this.easy.didYouLose() == false);
     }
-
+   
     @Test
     public void turnsAreCorrectAtBeginning() {
-        assertTrue(this.easy.getTurns() == 15);
+        assertTrue(this.easy.getTurns() == 10);
         assertTrue(this.normal.getTurns() == 20);
         assertTrue(this.hard.getTurns() == 25);
     }

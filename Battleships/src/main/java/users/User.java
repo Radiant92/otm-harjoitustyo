@@ -11,10 +11,10 @@ package users;
  */
 public class User {
 
-    String name;
-    int winsEasy;
-    int winsNormal;
-    int winsHard;
+    private String name;
+    private int winsEasy;
+    private int winsNormal;
+    private int winsHard;
 
     public User(String name, int easy, int normal, int hard) {
         this.name = name;
@@ -27,32 +27,28 @@ public class User {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getWinsEasy() {
         return winsEasy;
     }
 
-    public void WinEasy() {
+    public void winEasy() {
         this.winsEasy++;
+    }
+
+    public void winNormal() {
+        this.winsNormal++;
+    }
+
+    public void winHard() {
+        this.winsHard++;
     }
 
     public int getWinsNormal() {
         return winsNormal;
     }
 
-    public void WinNormal() {
-        this.winsNormal++;
-    }
-
     public int getWinsHard() {
         return winsHard;
-    }
-
-    public void WinHard() {
-        this.winsHard++;
     }
 
 }

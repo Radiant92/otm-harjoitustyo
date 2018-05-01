@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Board.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Battleships</a> &gt; <a href="index.source.html" class="el_package">battleships</a> &gt; <span class="el_source">Board.java</span></div><h1>Board.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package battleships;
+
+import java.util.*;
+
+/**
+ *
+ * @author strohm
+ */
+public class Board {
+
+    private int[][] board;
+    private Random r;
+    private Map&lt;String, Integer&gt; ships;
+    private int shipId;
+
+<span class="fc" id="L21">    public Board(int size) {</span>
+<span class="fc" id="L22">        shipId = 0;</span>
+<span class="fc" id="L23">        ships = new HashMap();</span>
+<span class="fc" id="L24">        this.r = new Random();</span>
+<span class="fc" id="L25">        this.board = new int[size][size];</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        for (int y = 0; y &lt; size; y++) {</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">            for (int x = 0; x &lt; size; x++) {</span>
+<span class="fc" id="L28">                this.board[y][x] = 0;</span>
+
+            }
+        }
+<span class="fc" id="L32">    }</span>
+
+    public Map&lt;String, Integer&gt; getShips() {
+<span class="fc" id="L35">        return ships;</span>
+    }
+
+    public int[][] getBoard() {
+<span class="fc" id="L39">        return this.board;</span>
+    }
+
+    public void setLine(Shipyard shipyard) {
+<span class="fc" id="L43">        int yritys = 0;</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        while (yritys &lt; 100) {</span>
+<span class="fc" id="L45">            yritys++;</span>
+<span class="fc" id="L46">            int startX = r.nextInt(board.length);</span>
+<span class="fc" id="L47">            int startY = r.nextInt(board.length - 2);</span>
+<span class="fc bfc" id="L48" title="All 6 branches covered.">            if (board[startX][startY] == 0 &amp;&amp; board[startX][startY + 1] == 0</span>
+                    &amp;&amp; board[startX][startY + 2] == 0) {
+<span class="fc" id="L50">                drawLineShip(startX, startY, shipyard);</span>
+<span class="fc" id="L51">                break;</span>
+            }
+<span class="fc" id="L53">        }</span>
+
+<span class="fc" id="L55">    }</span>
+
+    public void setlShip(Shipyard shipyard) {
+<span class="fc" id="L58">        int yritys = 0;</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        while (yritys &lt; 100) {</span>
+<span class="fc" id="L60">            yritys++;</span>
+<span class="fc" id="L61">            int startX = r.nextInt(board.length - 2);</span>
+<span class="fc" id="L62">            int startY = r.nextInt(board.length - 2);</span>
+<span class="fc bfc" id="L63" title="All 10 branches covered.">            if (board[startX][startY] == 0 &amp;&amp; board[startX][startY + 1] == 0</span>
+                    &amp;&amp; board[startX][startY + 2] == 0
+                    &amp;&amp; board[startX + 1][startY + 2] == 0
+                    &amp;&amp; board[startX + 2][startY + 2] == 0) {
+<span class="fc" id="L67">                drawlShip(startX, startY, shipyard);</span>
+<span class="fc" id="L68">                break;</span>
+            }
+<span class="fc" id="L70">        }</span>
+
+<span class="fc" id="L72">    }</span>
+
+    public void setuShip(Shipyard shipyard) {
+<span class="fc" id="L75">        int yritys = 0;</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        while (yritys &lt; 100) {</span>
+<span class="fc" id="L77">            yritys++;</span>
+<span class="fc" id="L78">            int startX = r.nextInt(board.length - 2);</span>
+<span class="fc" id="L79">            int startY = r.nextInt(board.length - 2);</span>
+<span class="fc bfc" id="L80" title="All 14 branches covered.">            if (board[startX][startY] == 0</span>
+                    &amp;&amp; board[startX][startY + 1] == 0
+                    &amp;&amp; board[startX][startY + 2] == 0
+                    &amp;&amp; board[startX + 1][startY + 2] == 0
+                    &amp;&amp; board[startX + 2][startY + 2] == 0
+                    &amp;&amp; board[startX + 2][startY + 1] == 0
+                    &amp;&amp; board[startX + 2][startY] == 0) {
+<span class="fc" id="L87">                drawUShip(startX, startY, shipyard);</span>
+<span class="fc" id="L88">                break;</span>
+            }
+<span class="fc" id="L90">        }</span>
+<span class="fc" id="L91">    }</span>
+
+    public void drawLineShip(int x, int y, Shipyard shipyard) {
+<span class="fc" id="L94">        shipId++;</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        for (int i = 0; i &lt; 3; i++) {</span>
+<span class="fc" id="L96">            board[x][y + i] = 1;</span>
+<span class="fc" id="L97">            ships.putIfAbsent(x + &quot; &quot; + (y + i), shipId);</span>
+        }
+<span class="fc" id="L99">        shipyard.buildShip(shipId, x, y, &quot;line&quot;);</span>
+
+<span class="fc" id="L101">    }</span>
+
+    public void drawlShip(int x, int y, Shipyard shipyard) {
+<span class="fc" id="L104">        shipId++;</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        for (int i = 0; i &lt; 3; i++) {</span>
+<span class="fc" id="L106">            board[x][y + i] = 1;</span>
+<span class="fc" id="L107">            ships.putIfAbsent(x + &quot; &quot; + (y + i), shipId);</span>
+        }
+<span class="fc bfc" id="L109" title="All 2 branches covered.">        for (int i = 1; i &lt; 3; i++) {</span>
+<span class="fc" id="L110">            board[x + i][y + 2] = 1;</span>
+<span class="fc" id="L111">            ships.putIfAbsent((x + i) + &quot; &quot; + (y + 2), shipId);</span>
+        }
+<span class="fc" id="L113">        shipyard.buildShip(shipId, x, y, &quot;lShip&quot;);</span>
+<span class="fc" id="L114">    }</span>
+
+    public void drawUShip(int x, int y, Shipyard shipyard) {
+<span class="fc" id="L117">        shipId++;</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        for (int i = 0; i &lt; 3; i++) {</span>
+<span class="fc" id="L119">            board[x][y + i] = 1;</span>
+<span class="fc" id="L120">            board[x + 2][y + i] = 1;</span>
+<span class="fc" id="L121">            ships.putIfAbsent(x + &quot; &quot; + (y + i), shipId);</span>
+<span class="fc" id="L122">            ships.putIfAbsent((x + 2) + &quot; &quot; + (y + i), shipId);</span>
+        }
+<span class="fc" id="L124">        board[x + 1][y + 2] = 1;</span>
+<span class="fc" id="L125">        ships.putIfAbsent((x + 1) + &quot; &quot; + (y + 2), shipId);</span>
+
+<span class="fc" id="L127">        shipyard.buildShip(shipId, x, y, &quot;uShip&quot;);</span>
+
+<span class="fc" id="L129">    }</span>
+
+    public void gotHit(int x, int y) {
+<span class="fc" id="L132">        board[x][y] = 2;</span>
+
+<span class="fc" id="L134">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

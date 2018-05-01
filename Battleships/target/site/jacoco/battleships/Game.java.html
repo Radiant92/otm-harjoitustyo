@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Game.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Battleships</a> &gt; <a href="index.source.html" class="el_package">battleships</a> &gt; <span class="el_source">Game.java</span></div><h1>Game.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package battleships;
+
+/**
+ *
+ * @author strohm
+ */
+public class Game {
+
+    private Board board;
+    private Shipyard shipyard;
+    private int turns;
+
+<span class="fc" id="L18">    public Game(int difficulty) {</span>
+<span class="fc" id="L19">        this.board = new Board(difficulty);</span>
+<span class="fc" id="L20">        this.shipyard = new Shipyard();</span>
+
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (difficulty == 6) {</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">            for (int i = 0; i &lt; 3; i++) {</span>
+<span class="fc" id="L24">                board.setLine(shipyard);</span>
+            }
+<span class="fc" id="L26">            this.turns = 10;</span>
+
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        } else if (difficulty == 8) {</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">            for (int i = 0; i &lt; 3; i++) {</span>
+<span class="fc" id="L30">                board.setlShip(shipyard);</span>
+<span class="fc" id="L31">                board.setLine(shipyard);</span>
+            }
+<span class="fc" id="L33">            this.turns = 20;</span>
+
+        } else {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">            for (int i = 0; i &lt; 3; i++) {</span>
+<span class="fc" id="L37">                board.setuShip(shipyard);</span>
+<span class="fc" id="L38">                board.setlShip(shipyard);</span>
+<span class="fc" id="L39">                board.setLine(shipyard);</span>
+            }
+<span class="fc" id="L41">            this.turns = 25;</span>
+        }
+<span class="fc" id="L43">    }</span>
+
+    public boolean didYouWin() {
+<span class="fc" id="L46">        return shipyard.areAllSunken();</span>
+    }
+
+    public boolean didYouLose() {
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        if (turns &lt;= 0) {</span>
+<span class="nc" id="L51">            return true;</span>
+        }
+<span class="fc" id="L53">        return false;</span>
+    }
+
+    public String hit(int x, int y) {
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (this.board.getBoard()[x][y] == 1) {</span>
+<span class="fc" id="L58">            this.board.gotHit(x, y);</span>
+<span class="fc" id="L59">            int shipId = this.board.getShips().get(x + &quot; &quot; + y);</span>
+<span class="fc" id="L60">            shipyard.getShip(shipId).getSection(x, y).hit();</span>
+<span class="fc" id="L61">            return &quot;strike&quot;;</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        } else if (this.board.getBoard()[x][y] == 0) {</span>
+<span class="fc" id="L63">            this.board.getBoard()[x][y] = 3;</span>
+<span class="fc" id="L64">            this.turns--;</span>
+<span class="fc" id="L65">            return &quot;miss&quot;;</span>
+        }
+<span class="nc" id="L67">        return &quot;nothing&quot;;</span>
+    }
+
+    public int getTurns() {
+<span class="fc" id="L71">        return turns;</span>
+    }
+
+    public int getLineShips() {
+<span class="fc" id="L75">        return shipyard.getLine();</span>
+    }
+
+    public int getLShips() {
+<span class="fc" id="L79">        return shipyard.getlShape();</span>
+    }
+
+    public int getUShips() {
+<span class="fc" id="L83">        return shipyard.getuShape();</span>
+    }
+
+    public Board getBoard() {
+<span class="fc" id="L87">        return this.board;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

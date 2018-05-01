@@ -1,0 +1,9 @@
+markus;5;3;4
+radiant;4;0;9
+voivoi;1;1;1
+silakka;4;38;4
+marty;0;6;6
+kalle;4;5;2
+vilma;7;42;5
+joonas;4;2;0
+milla;500;0;0
