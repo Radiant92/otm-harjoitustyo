@@ -9,7 +9,7 @@
 
 [arkkitehtuurikuvaus](Battleships/Dokumentaatio/arkkitehtuuri.md)
 
-[käyttöohje]
+[käyttöohje](Battleships/Dokumentaatio/käyttöohje.md)
 
 [tuntikirjanpito](Battleships/Dokumentaatio/tuntikirjanpito.md)
 
