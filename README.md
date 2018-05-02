@@ -2,6 +2,13 @@
 
 # Projekti Laivanupotus
 
+Laivanupotuksessa käyttäjä pyrkii löytämään kaikki kartalle piilotetut laivat saaden tehdä 
+vain rajatun määrän vääriä arvauksia.
+
+sovellus tarjoaa kolme vaikeutta, käyttäjien voittojen seurannan ja ennätyslistat kullekkin vaikeus asteelle.
+
+laivojen muotoja on kolme: suora kolmen ruudun pituinen, L:än muotoinen viiden ruudun pituinen ja U:n muotoinen seitsemän
+ruudun pituinen. 
 
 ## Dokumentaatio
 
