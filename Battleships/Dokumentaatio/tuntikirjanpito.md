@@ -10,4 +10,5 @@
 |24.4|4|main menu and final touches|
 |30.4|2|some test classes and database structure|
 |1.5|4|Leaderboard and final touches|
-# sum = 34h 
+|2.5|4|javadoc and some fixes to the UI etc.|
+# sum = 38h 

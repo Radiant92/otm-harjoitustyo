@@ -8,6 +8,8 @@ package battleships;
 import java.util.*;
 
 /**
+ * Contains all the Ships of current game and provides methods that retrieve
+ * ships or information about ships.
  *
  * @author strohm
  */
@@ -17,93 +19,128 @@ public class Shipyard {
     private List&lt;Ship&gt; lShips;
     private List&lt;Ship&gt; uShips;
 
-<span class="fc" id="L20">    public Shipyard() {</span>
+    /**
+     * Constructs a new shipyard creating lists for each ship type: line,
+     * L-shape and U-shape ships
+     */
+<span class="fc" id="L26">    public Shipyard() {</span>
 
-<span class="fc" id="L22">        this.lineShips = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L23">        this.lShips = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L24">        this.uShips = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L28">        this.lineShips = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L29">        this.lShips = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L30">        this.uShips = new ArrayList&lt;&gt;();</span>
 
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L32">    }</span>
 
+    /**
+     * Goes through all ships in shipyard and returns true if all ships are
+     * sunken.
+     *
+     * @return true if all ships are sunken.
+     */
     public boolean areAllSunken() {
-<span class="fc bfc" id="L29" title="All 2 branches covered.">        for (Ship ship : lineShips) {</span>
-<span class="pc bpc" id="L30" title="1 of 2 branches missed.">            if (ship.isSunken() == false) {</span>
-<span class="fc" id="L31">                return false;</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        for (Ship ship : lineShips) {</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">            if (ship.isSunken() == false) {</span>
+<span class="fc" id="L43">                return false;</span>
             }
-<span class="nc" id="L33">        }</span>
-<span class="fc bfc" id="L34" title="All 2 branches covered.">        for (Ship ship : lShips) {</span>
-<span class="pc bpc" id="L35" title="1 of 2 branches missed.">            if (ship.isSunken() == false) {</span>
-<span class="fc" id="L36">                return false;</span>
+<span class="nc" id="L45">        }</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        for (Ship ship : lShips) {</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">            if (ship.isSunken() == false) {</span>
+<span class="fc" id="L48">                return false;</span>
             }
-<span class="nc" id="L38">        }</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">        for (Ship ship : uShips) {</span>
-<span class="pc bpc" id="L40" title="1 of 2 branches missed.">            if (ship.isSunken() == false) {</span>
-<span class="fc" id="L41">                return false;</span>
+<span class="nc" id="L50">        }</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        for (Ship ship : uShips) {</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">            if (ship.isSunken() == false) {</span>
+<span class="fc" id="L53">                return false;</span>
             }
-<span class="nc" id="L43">        }</span>
-<span class="fc" id="L44">        return true;</span>
+<span class="nc" id="L55">        }</span>
+<span class="fc" id="L56">        return true;</span>
     }
 
+    /**
+     *
+     * @return amount of line ships that are not sunken.
+     */
     public int getLine() {
-<span class="fc" id="L48">        int i = 0;</span>
-<span class="fc bfc" id="L49" title="All 2 branches covered.">        for (Ship ship : lineShips) {</span>
-<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            if (!ship.isSunken()) {</span>
-<span class="fc" id="L51">                i++;</span>
+<span class="fc" id="L64">        int i = 0;</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        for (Ship ship : lineShips) {</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">            if (!ship.isSunken()) {</span>
+<span class="fc" id="L67">                i++;</span>
             }
-<span class="fc" id="L53">        }</span>
-<span class="fc" id="L54">        return i;</span>
+<span class="fc" id="L69">        }</span>
+<span class="fc" id="L70">        return i;</span>
     }
 
+    /**
+     *
+     * @return amount of L-shaped ships that are not sunken.
+     */
     public int getlShape() {
-<span class="fc" id="L58">        int i = 0;</span>
-<span class="fc bfc" id="L59" title="All 2 branches covered.">        for (Ship ship : lShips) {</span>
-<span class="pc bpc" id="L60" title="1 of 2 branches missed.">            if (!ship.isSunken()) {</span>
-<span class="fc" id="L61">                i++;</span>
+<span class="fc" id="L78">        int i = 0;</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        for (Ship ship : lShips) {</span>
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">            if (!ship.isSunken()) {</span>
+<span class="fc" id="L81">                i++;</span>
             }
-<span class="fc" id="L63">        }</span>
-<span class="fc" id="L64">        return i;</span>
+<span class="fc" id="L83">        }</span>
+<span class="fc" id="L84">        return i;</span>
     }
 
+    /**
+     *
+     * @return amount of U-shaped ships that are not sunken.
+     */
     public int getuShape() {
-<span class="fc" id="L68">        int i = 0;</span>
-<span class="fc bfc" id="L69" title="All 2 branches covered.">        for (Ship ship : uShips) {</span>
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">            if (!ship.isSunken()) {</span>
-<span class="fc" id="L71">                i++;</span>
+<span class="fc" id="L92">        int i = 0;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        for (Ship ship : uShips) {</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">            if (!ship.isSunken()) {</span>
+<span class="fc" id="L95">                i++;</span>
             }
-<span class="fc" id="L73">        }</span>
-<span class="fc" id="L74">        return i;</span>
+<span class="fc" id="L97">        }</span>
+<span class="fc" id="L98">        return i;</span>
     }
 
+    /**
+     * Creates a new Ship and adds it to the corresponding list of
+     * ships according to it's form.
+     * @param shipId id of ship being built.
+     * @param x coordinate x of ships head which is to be built.
+     * @param y coordinate y of ships head which is to be built.
+     * @param form ships designated form.
+     */
     public void buildShip(int shipId, int x, int y, String form) {
-<span class="fc bfc" id="L78" title="All 2 branches covered.">        if (form.equals(&quot;line&quot;)) {</span>
-<span class="fc" id="L79">            lineShips.add(new Ship(shipId, form, x, y));</span>
-<span class="fc bfc" id="L80" title="All 2 branches covered.">        } else if (form.equals(&quot;lShip&quot;)) {</span>
-<span class="fc" id="L81">            lShips.add(new Ship(shipId, form, x, y));</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">        if (form.equals(&quot;line&quot;)) {</span>
+<span class="fc" id="L111">            lineShips.add(new Ship(shipId, form, x, y));</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        } else if (form.equals(&quot;lShip&quot;)) {</span>
+<span class="fc" id="L113">            lShips.add(new Ship(shipId, form, x, y));</span>
         } else {
-<span class="fc" id="L83">            uShips.add(new Ship(shipId, form, x, y));</span>
+<span class="fc" id="L115">            uShips.add(new Ship(shipId, form, x, y));</span>
 
         }
 
-<span class="fc" id="L87">    }</span>
-
+<span class="fc" id="L119">    }</span>
+    /**
+     * Method searches ship through all the ship lists for one that matches the
+     * shipId by the given parameter.
+     * @param shipId id of ship which is being searched.
+     * @return Ship with the corresponding id to the parameter shipId.
+     */
     public Ship getShip(int shipId) {
-<span class="fc bfc" id="L90" title="All 2 branches covered.">        for (Ship ship : lineShips) {</span>
-<span class="fc bfc" id="L91" title="All 2 branches covered.">            if (ship.getId() == shipId) {</span>
-<span class="fc" id="L92">                return ship;</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">        for (Ship ship : lineShips) {</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">            if (ship.getId() == shipId) {</span>
+<span class="fc" id="L129">                return ship;</span>
             }
-<span class="fc" id="L94">        }</span>
-<span class="fc bfc" id="L95" title="All 2 branches covered.">        for (Ship ship : lShips) {</span>
-<span class="fc bfc" id="L96" title="All 2 branches covered.">            if (ship.getId() == shipId) {</span>
-<span class="fc" id="L97">                return ship;</span>
+<span class="fc" id="L131">        }</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">        for (Ship ship : lShips) {</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">            if (ship.getId() == shipId) {</span>
+<span class="fc" id="L134">                return ship;</span>
             }
-<span class="fc" id="L99">        }</span>
-<span class="fc bfc" id="L100" title="All 2 branches covered.">        for (Ship ship : uShips) {</span>
-<span class="fc bfc" id="L101" title="All 2 branches covered.">            if (ship.getId() == shipId) {</span>
-<span class="fc" id="L102">                return ship;</span>
+<span class="fc" id="L136">        }</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">        for (Ship ship : uShips) {</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">            if (ship.getId() == shipId) {</span>
+<span class="fc" id="L139">                return ship;</span>
             }
 
-<span class="fc" id="L105">        }</span>
-<span class="fc" id="L106">        return null;</span>
+<span class="fc" id="L142">        }</span>
+<span class="fc" id="L143">        return null;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

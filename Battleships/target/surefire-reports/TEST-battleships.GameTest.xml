@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="battleships.GameTest" time="0.338" tests="8" errors="0" skipped="0" failures="0">
+<testsuite name="battleships.GameTest" time="0.348" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -59,12 +59,12 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="didYouLoseAtBeginningFalse" classname="battleships.GameTest" time="0.004"/>
-  <testcase name="hitReturnsCorrectResponse" classname="battleships.GameTest" time="0.002"/>
-  <testcase name="turnsAreCorrectAtBeginning" classname="battleships.GameTest" time="0.001"/>
+  <testcase name="didYouLoseAtBeginningFalse" classname="battleships.GameTest" time="0"/>
+  <testcase name="hitReturnsCorrectResponse" classname="battleships.GameTest" time="0"/>
+  <testcase name="turnsAreCorrectAtBeginning" classname="battleships.GameTest" time="0"/>
   <testcase name="gettingAMissLowersTurns" classname="battleships.GameTest" time="0"/>
-  <testcase name="getUShipsMoreThanZero" classname="battleships.GameTest" time="0.176"/>
-  <testcase name="getLShipsMoreThanZero" classname="battleships.GameTest" time="0.086"/>
-  <testcase name="getLineShipsMoreThanZero" classname="battleships.GameTest" time="0.069"/>
-  <testcase name="didYouWinAtBeginningFalse" classname="battleships.GameTest" time="0"/>
+  <testcase name="getUShipsMoreThanZero" classname="battleships.GameTest" time="0.192"/>
+  <testcase name="getLShipsMoreThanZero" classname="battleships.GameTest" time="0.098"/>
+  <testcase name="getLineShipsMoreThanZero" classname="battleships.GameTest" time="0.057"/>
+  <testcase name="didYouWinAtBeginningFalse" classname="battleships.GameTest" time="0.001"/>
 </testsuite>

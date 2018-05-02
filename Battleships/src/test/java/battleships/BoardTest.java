@@ -81,10 +81,5 @@ public class BoardTest {
         assertTrue(this.board.getShips().containsValue(1));
     }
 
-    @Test
-    public void gettingHitWorks() {
-        this.board.gotHit(0, 0);
-        assertTrue(this.board.getBoard()[0][0] == 2);
-    }
 
 }

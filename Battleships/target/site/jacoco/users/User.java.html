@@ -6,6 +6,8 @@
 package users;
 
 /**
+ * Class provides user creation, information retrieval and management of games
+ * won.
  *
  * @author strohm
  */
@@ -16,39 +18,57 @@ public class User {
     private int winsNormal;
     private int winsHard;
 
-<span class="fc" id="L19">    public User(String name, int easy, int normal, int hard) {</span>
-<span class="fc" id="L20">        this.name = name;</span>
-<span class="fc" id="L21">        winsEasy = easy;</span>
-<span class="fc" id="L22">        winsNormal = normal;</span>
-<span class="fc" id="L23">        winsHard = hard;</span>
-<span class="fc" id="L24">    }</span>
+    /**
+     * Constructor witch creates an user based on information set as its
+     * parameters
+     *
+     * @param name sets name as users username.
+     * @param easy users current wins on easy setting.
+     * @param normal users current wins on normal setting.
+     * @param hard users current wins on hard setting.
+     */
+<span class="fc" id="L30">    public User(String name, int easy, int normal, int hard) {</span>
+<span class="fc" id="L31">        this.name = name;</span>
+<span class="fc" id="L32">        winsEasy = easy;</span>
+<span class="fc" id="L33">        winsNormal = normal;</span>
+<span class="fc" id="L34">        winsHard = hard;</span>
+<span class="fc" id="L35">    }</span>
 
     public String getName() {
-<span class="fc" id="L27">        return name;</span>
+<span class="fc" id="L38">        return name;</span>
     }
+
+    /**
+     * Adds a win to easy games won.
+     */
+    public void winEasy() {
+<span class="fc" id="L45">        this.winsEasy++;</span>
+<span class="fc" id="L46">    }</span>
+
+    /**
+     * Adds a win to normal games won.
+     */
+    public void winNormal() {
+<span class="fc" id="L52">        this.winsNormal++;</span>
+<span class="fc" id="L53">    }</span>
+
+    /**
+     * Adds a win to hard games won.
+     */
+    public void winHard() {
+<span class="fc" id="L59">        this.winsHard++;</span>
+<span class="fc" id="L60">    }</span>
 
     public int getWinsEasy() {
-<span class="fc" id="L31">        return winsEasy;</span>
+<span class="fc" id="L63">        return winsEasy;</span>
     }
 
-    public void winEasy() {
-<span class="fc" id="L35">        this.winsEasy++;</span>
-<span class="fc" id="L36">    }</span>
-
-    public void winNormal() {
-<span class="fc" id="L39">        this.winsNormal++;</span>
-<span class="fc" id="L40">    }</span>
-
-    public void winHard() {
-<span class="fc" id="L43">        this.winsHard++;</span>
-<span class="fc" id="L44">    }</span>
-
     public int getWinsNormal() {
-<span class="fc" id="L47">        return winsNormal;</span>
+<span class="fc" id="L67">        return winsNormal;</span>
     }
 
     public int getWinsHard() {
-<span class="fc" id="L51">        return winsHard;</span>
+<span class="fc" id="L71">        return winsHard;</span>
     }
 
 }

@@ -8,7 +8,7 @@ package battleships;
 import java.util.*;
 
 /**
- *
+ * Class provides creation of Ships and management of ships sections.
  * @author strohm
  */
 public class Ship {
@@ -19,72 +19,95 @@ public class Ship {
     private int headY;
     private int id;
 
-<span class="fc" id="L22">    public Ship(int id, String form, int headX, int headY) {</span>
-<span class="fc" id="L23">        this.form = form;</span>
-<span class="fc" id="L24">        this.id = id;</span>
-<span class="fc" id="L25">        this.sections = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L26">        this.headX = headX;</span>
-<span class="fc" id="L27">        this.headY = headY;</span>
-<span class="fc" id="L28">        buildShip();</span>
-<span class="fc" id="L29">    }</span>
+    /**
+     * Constructor constructs a Ship with given parameters
+     * and calls buildShip() method to form the ship from with shipSections.
+     * @param id the ships shipId, which is an individual number assigned
+     * to every ship.
+     * @param form the form of the ship.
+     * @param headX coordinate x of the ships head.
+     * @param headY coordinate y of the ships head.
+     */
+<span class="fc" id="L31">    public Ship(int id, String form, int headX, int headY) {</span>
+<span class="fc" id="L32">        this.form = form;</span>
+<span class="fc" id="L33">        this.id = id;</span>
+<span class="fc" id="L34">        this.sections = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L35">        this.headX = headX;</span>
+<span class="fc" id="L36">        this.headY = headY;</span>
+<span class="fc" id="L37">        buildShip();</span>
+<span class="fc" id="L38">    }</span>
 
     public int getHeadX() {
-<span class="fc" id="L32">        return headX;</span>
+<span class="fc" id="L41">        return headX;</span>
     }
 
     public int getHeadY() {
-<span class="fc" id="L36">        return headY;</span>
+<span class="fc" id="L45">        return headY;</span>
     }
 
     public int getId() {
-<span class="fc" id="L40">        return id;</span>
+<span class="fc" id="L49">        return id;</span>
     }
 
     public String getForm() {
-<span class="fc" id="L44">        return form;</span>
+<span class="fc" id="L53">        return form;</span>
     }
-
+/**
+ * Checks if the ship has a shipSection which has not sunken.
+ * @return true if non of the shipSections are intact.
+ */
     public boolean isSunken() {
-<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        for (ShipSection section : sections) {</span>
-<span class="pc bpc" id="L49" title="1 of 2 branches missed.">            if (section.isIntact()) {</span>
-<span class="fc" id="L50">                return false;</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">        for (ShipSection section : sections) {</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">            if (section.isIntact()) {</span>
+<span class="fc" id="L62">                return false;</span>
             }
-<span class="nc" id="L52">        }</span>
-<span class="nc" id="L53">        return true;</span>
+<span class="nc" id="L64">        }</span>
+<span class="nc" id="L65">        return true;</span>
     }
-
+/**
+ * 
+ * @return a list of ShipSection's of the Ship. 
+ */
     public List&lt;ShipSection&gt; getSections() {
-<span class="fc" id="L57">        return sections;</span>
+<span class="fc" id="L72">        return sections;</span>
     }
-
+/**
+ * Find a ShipSection that matches coordinates given as parameters.
+ * @param x coordinate x of ShipSection.
+ * @param y coordinate y of ShipSection.
+ * @return found ShipSection or null. 
+ */
     public ShipSection getSection(int x, int y) {
-<span class="pc bpc" id="L61" title="1 of 2 branches missed.">        for (ShipSection section : sections) {</span>
-<span class="fc bfc" id="L62" title="All 4 branches covered.">            if (section.getX() == x &amp;&amp; section.getY() == y) {</span>
-<span class="fc" id="L63">                return section;</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        for (ShipSection section : sections) {</span>
+<span class="fc bfc" id="L82" title="All 4 branches covered.">            if (section.getX() == x &amp;&amp; section.getY() == y) {</span>
+<span class="fc" id="L83">                return section;</span>
             }
-<span class="fc" id="L65">        }</span>
-<span class="nc" id="L66">        return null;</span>
+<span class="fc" id="L85">        }</span>
+<span class="nc" id="L86">        return null;</span>
     }
-
+    /**
+     * Builds a Ship by creating a list of ShipSections starting from the head
+     * and constructed according to the form of the ship.  
+     */
     public void buildShip() {
-<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (this.form == &quot;line&quot;) {</span>
-<span class="fc bfc" id="L71" title="All 2 branches covered.">            for (int i = 0; i &lt; 3; i++) {</span>
-<span class="fc" id="L72">                sections.add(new ShipSection(id, this.headX, this.headY + i));</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        if (this.form == &quot;line&quot;) {</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">            for (int i = 0; i &lt; 3; i++) {</span>
+<span class="fc" id="L95">                sections.add(new ShipSection(id, this.headX, this.headY + i));</span>
             }
-<span class="fc bfc" id="L74" title="All 2 branches covered.">        } else if (this.form == &quot;lShip&quot;) {</span>
-<span class="fc bfc" id="L75" title="All 2 branches covered.">            for (int i = 0; i &lt; 3; i++) {</span>
-<span class="fc" id="L76">                sections.add(new ShipSection(id, this.headX, this.headY + i));</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        } else if (this.form == &quot;lShip&quot;) {</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">            for (int i = 0; i &lt; 3; i++) {</span>
+<span class="fc" id="L99">                sections.add(new ShipSection(id, this.headX, this.headY + i));</span>
             }
-<span class="fc bfc" id="L78" title="All 2 branches covered.">            for (int i = 1; i &lt; 3; i++) {</span>
-<span class="fc" id="L79">                sections.add(new ShipSection(id, this.headX + i, this.headY + 2));</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            for (int i = 1; i &lt; 3; i++) {</span>
+<span class="fc" id="L102">                sections.add(new ShipSection(id, this.headX + i, this.headY + 2));</span>
             }
         } else {
-<span class="fc bfc" id="L82" title="All 2 branches covered.">            for (int i = 0; i &lt; 3; i++) {</span>
-<span class="fc" id="L83">                sections.add(new ShipSection(id, this.headX, this.headY + i));</span>
-<span class="fc" id="L84">                sections.add(new ShipSection(id, this.headX + 2, this.headY + i));</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">            for (int i = 0; i &lt; 3; i++) {</span>
+<span class="fc" id="L106">                sections.add(new ShipSection(id, this.headX, this.headY + i));</span>
+<span class="fc" id="L107">                sections.add(new ShipSection(id, this.headX + 2, this.headY + i));</span>
             }
-<span class="fc" id="L86">            sections.add(new ShipSection(id, headX + 1, headY + 2));</span>
+<span class="fc" id="L109">            sections.add(new ShipSection(id, headX + 1, headY + 2));</span>
         }
-<span class="fc" id="L88">    }</span>
+<span class="fc" id="L111">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
