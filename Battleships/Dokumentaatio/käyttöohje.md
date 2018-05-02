@@ -80,7 +80,7 @@ Kaikkien vaikeusasteiden ennätyslistat näyttävät enintään viisi käyttäj�
 
 kuvassa valittu normaalin vaikeuden ennätyslista, jossa henrillä näkyy olevan yksi voitto ja käyttäjällä j jolla ei ole voittoa
 lainkaan:
-![normaali ennätys lista](normaaliennätys)
+![normaali ennätys lista](normaaliennätys.png)
 
 Listan alla on nappi jota painamalla käyttäjä viedään takaisin ennätys valikko ikkunaan.
  
