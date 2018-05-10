@@ -1,1 +1,1 @@
-![Arkkitehtuuri kuvaus](Arkkitehtuuri.png)
+![Arkkitehtuuri kuvaus](kuvat/Arkkitehtuuri.png)
