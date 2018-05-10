@@ -1,29 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package BattleshipsUI;
 
 import battleships.Game;
 import java.util.*;
-
 import users.Database;
-
 import javafx.application.Application;
-
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
 import javafx.scene.layout.BorderPane;
-
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
 import javafx.stage.Stage;
 import users.User;
 
@@ -34,14 +24,20 @@ import users.User;
 public class BattleshipsUI extends Application {
 
     private static GridPane board;
+    private static BorderPane game;
     private static Game newGame;
     private static Database database;
-    private static BorderPane game;
-    private static Scene menuScreen;
     private static User user;
-    private static Stage window;
     private static List<Label> leaderLabels;
+    private static Scene menuScreen;
+    private static Stage window;
 
+    /**
+     * Starts the application and runs the UI of the game.
+     *
+     * @param window Visible screen Stage which is shown to the user.
+     * @throws Exception in case of a failure.
+     */
     @Override
     public void start(Stage window) throws Exception {
         this.window = window;
@@ -192,7 +188,7 @@ public class BattleshipsUI extends Application {
             emptyList();
             List<User> easyTop = this.database.getTopEasy();
             int top = easyTop.size();
-            if(top > 5){
+            if (top > 5) {
                 top = 5;
             }
             for (int i = 0; i < top; i++) {
@@ -205,7 +201,7 @@ public class BattleshipsUI extends Application {
             emptyList();
             List<User> normalTop = this.database.getTopNormal();
             int top = normalTop.size();
-            if(top > 5){
+            if (top > 5) {
                 top = 5;
             }
             for (int i = 0; i < top; i++) {
@@ -217,7 +213,7 @@ public class BattleshipsUI extends Application {
             emptyList();
             List<User> hardTop = this.database.getTopHard();
             int top = hardTop.size();
-            if(top > 5){
+            if (top > 5) {
                 top = 5;
             }
             for (int i = 0; i < top; i++) {
@@ -237,6 +233,14 @@ public class BattleshipsUI extends Application {
 
     }
 
+    /**
+     * During gameplay this method represents the visual board of the game and,
+     * calls the Game classes hit() method to figure out if mouse clicked on the
+     * board has hit a ship. if the game is won or lost this method will
+     * redirect the user to the main menu
+     *
+     * @param size determines the size of the board (size * size).
+     */
     public void playGame(int size) {
 
         Label turns = new Label("" + newGame.getTurns());
@@ -303,10 +307,16 @@ public class BattleshipsUI extends Application {
 
     }
 
+    /**
+     * Set's scene as the starting menu screen.
+     */
     public static void goToMenu() {
         window.setScene(menuScreen);
     }
 
+    /**
+     * Creates an empty top 5 list.
+     */
     public static void emptyList() {
         leaderLabels.get(0).setText("1. ");
         leaderLabels.get(1).setText("2. ");
