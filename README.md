@@ -24,7 +24,7 @@ ruudun pituinen.
 
 ## Releaset
 
-[release 3.0] (FINAL)(https://github.com/Radiant92/otm-harjoitustyo/releases/tag/viikko7)
+[release 3.0 (FINAL)](https://github.com/Radiant92/otm-harjoitustyo/releases/tag/viikko7)
 
 [release 2.0 (Vanha)](https://github.com/Radiant92/otm-harjoitustyo/releases/tag/viikko6)
 
@@ -42,7 +42,7 @@ mvn test
 
 mvn jacoco:report
 
-###raporttia voi lukea selaimella ja sen html löytyy hakemistosta:
+### raporttia voi lukea selaimella ja sen html löytyy hakemistosta:
 
 target/site/jacoco/index.html
 
