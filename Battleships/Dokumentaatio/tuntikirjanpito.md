@@ -11,4 +11,6 @@
 |30.4|2|tietokannan luonti ja lisää testejä|
 |1.5|4|ennätyslistan luonti ja lisää testejä|
 |2.5|4|javadockin luonti ja sovelluksen viimeistelyjä.|
-# sum = 38h 
+|10.5|2|dokumentaatiota|
+|11.5|4|dokumentaatiota|
+# sum = 44h 

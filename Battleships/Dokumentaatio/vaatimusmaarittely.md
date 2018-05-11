@@ -19,13 +19,13 @@ Sovellus koostuu kolmesta eri näkymästä
 
 ### * Main menu
 
-Main menussa eli päävalikossa käyttäjä voi aloittaa pelin, vaihtaa vaikeutta
+Main menussa eli päävalikossa käyttäjä voi luoda tilin, aloittaa pelin,
 tai katsoa ennätyslistoja.
 
 
 ### * Peli
 
-Pelissä pelaaja näkee peliruudukon ja  laivojen määrän sekä
+Pelissä pelaaja näkee peliruudukon, laivojen määrän sekä
 jäljellä olevien arvausten määrän.
 
 ### * Ennätyslista

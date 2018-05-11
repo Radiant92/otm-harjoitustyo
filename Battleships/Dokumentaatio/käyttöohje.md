@@ -1,6 +1,6 @@
 # *Käyttöohje*
 
-Lataa tiedosto [Battleships.jar](https://github.com/Radiant92/otm-harjoitustyo/releases/tag/viikko6)
+Lataa tiedosto [Battleships.jar](https://github.com/Radiant92/otm-harjoitustyo/releases/tag/viikko7)
 
 # Ohjelman käynnistäminen
 
