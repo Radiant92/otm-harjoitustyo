@@ -4,7 +4,7 @@ Lataa tiedosto [Battleships.jar](https://github.com/Radiant92/otm-harjoitustyo/r
 
 # Ohjelman käynnistäminen
 
-Ohjelma käynnistetään komennolla "java -jar Battleships-2.0.jar"
+Ohjelma käynnistetään komennolla "java -jar Battleships-3.0.jar"
 
 # Päävalikko
 
